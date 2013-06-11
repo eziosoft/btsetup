@@ -27,14 +27,13 @@ void setup() {
   Serial.begin(115200);
   BTSet();
 
-  digitalWrite(13, HIGH);
+ 
 
 }
 
 void BTSet()
 {
   delay(100);
-  digitalWrite(13, LOW);
   Serial.print("AT");
   delay(1000);
   Serial.print("AT+NAME"+BTName);
@@ -44,11 +43,17 @@ void BTSet()
   Serial.print("AT+BAUD8");
   delay(1000);
   if(Serial.available())
-  digitalWrite(13, HIGH);
+  {
+	digitalWrite(13, HIGH);
+	delay(1000);
+  }
 }
 
 void loop() {
-
+  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);               // wait for a second
+  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);  
 }
 
 
